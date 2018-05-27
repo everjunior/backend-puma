@@ -1,42 +1,26 @@
 package com.puma.model;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import static java.util.Arrays.asList;
-
-public class User {
+@Entity
+@Table (name = "app_user")
+public class User extends AbstractEntity{
+    @NotEmpty
     private String name;
-    private int id;
-    public static List<User> userList;
 
-    static {
-        userRepository();
+    @NotEmpty
+    @Email
+    private String email;
+
+    public String getEmail() {
+        return email;
     }
 
-    public User(int id, String name){
-        this(name);
-        this.id = id;
-    }
-
-    public User(String name){
-        this.name = name;
-    }
-
-    public User(){
-
-    }
-
-    public static List<User> getUserList() {
-        return userList;
-    }
-
-    public static void userRepository(){
-        userList = new ArrayList<>(asList(new User(1, "Joao"), new User(2, "Maria")));
-    }
-
-    public static void setUserList(List<User> userList) {
-        User.userList = userList;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {
@@ -45,28 +29,5 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        return id == user.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return id;
     }
 }
