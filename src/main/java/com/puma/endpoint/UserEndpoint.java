@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("/users")
 public class UserEndpoint {
     private final UserRepository userDAO;
 
