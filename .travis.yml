@@ -1,6 +1,23 @@
 language: java
+
 jdk:
 - oraclejdk8
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database pumadb;' -U postgres
+  - psql 
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+    - postgresql-10
+    - postgresql-client-10
+env:
+  global:
+  - PGPORT=5432
+
+
 deploy:
   provider: heroku
   api-key:
