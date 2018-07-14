@@ -1,6 +1,8 @@
 package com.puma.model;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -8,12 +10,42 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table (name = "app_user")
 public class User extends AbstractEntity{
-    @NotEmpty
+    
+    //cpf vai ter que ser pk também
+    //private String cpf;
+    
+	@NotEmpty
     private String name;
 
     @NotEmpty
     @Email
     private String email;
+    
+    @NotEmpty
+    private String escolaridade;
+    
+    @NotEmpty
+    private String profissao;
+    
+    @NotEmpty
+    @Digits(fraction = 0, integer = 11)
+    private String telefone1;
+    
+    @NotEmpty
+    @Digits(fraction = 0, integer = 11)
+    private String telefone2;
+
+    @Digits(fraction = 0, integer = 11)
+    private String telefone3;
+
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getEmail() {
         return email;
@@ -23,11 +55,43 @@ public class User extends AbstractEntity{
         this.email = email;
     }
 
-    public String getName() {
-        return name;
-    }
+	public String getEscolaridade() {
+		return escolaridade;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setEscolaridade(String escolaridade) {
+		this.escolaridade = escolaridade;
+	}
+
+	public String getProfissao() {
+		return profissao;
+	}
+
+	public void setProfissao(String profissao) {
+		this.profissao = profissao;
+	}
+
+	public String getTelefone1() {
+		return telefone1;
+	}
+
+	public void setTelefone1(String telefone1) {
+		this.telefone1 = telefone1;
+	}
+
+	public String getTelefone2() {
+		return telefone2;
+	}
+
+	public void setTelefone2(String telefone2) {
+		this.telefone2 = telefone2;
+	}
+
+	public String getTelefone3() {
+		return telefone3;
+	}
+
+	public void setTelefone3(String telefone3) {
+		this.telefone3 = telefone3;
+	}    
 }
