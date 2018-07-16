@@ -10,24 +10,15 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table (name = "app_user")
 public class User extends AbstractEntity{
-    
-    //cpf vai ter que ser pk também
-    //private String cpf;
-    
+        
 	@NotEmpty
     private String name;
 
-    @NotEmpty
-    @Email
-    private String email;
+	@NotEmpty
+	@Digits(fraction = 0, integer = 11)
+	private String cpf;
     
-    @NotEmpty
-    private String escolaridade;
-    
-    @NotEmpty
-    private String profissao;
-    
-    @NotEmpty
+	@NotEmpty
     @Digits(fraction = 0, integer = 11)
     private String telefone1;
     
@@ -38,6 +29,16 @@ public class User extends AbstractEntity{
     @Digits(fraction = 0, integer = 11)
     private String telefone3;
 
+    @NotEmpty
+    @Email
+    private String email;
+    
+//    @NotEmpty
+//    private String escolaridade;
+    
+    @NotEmpty
+    private String profissao;
+    
     
     public String getName() {
         return name;
@@ -46,29 +47,13 @@ public class User extends AbstractEntity{
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-	public String getEscolaridade() {
-		return escolaridade;
+    
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setEscolaridade(String escolaridade) {
-		this.escolaridade = escolaridade;
-	}
-
-	public String getProfissao() {
-		return profissao;
-	}
-
-	public void setProfissao(String profissao) {
-		this.profissao = profissao;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public String getTelefone1() {
@@ -94,4 +79,28 @@ public class User extends AbstractEntity{
 	public void setTelefone3(String telefone3) {
 		this.telefone3 = telefone3;
 	}    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+/*	public String getEscolaridade() {
+		return escolaridade;
+	}
+
+	public void setEscolaridade(String escolaridade) {
+		this.escolaridade = escolaridade;
+	}
+*/
+	public String getProfissao() {
+		return profissao;
+	}
+
+	public void setProfissao(String profissao) {
+		this.profissao = profissao;
+	}
 }
