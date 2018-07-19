@@ -20,24 +20,20 @@ public class User extends AbstractEntity{
     
 	@NotEmpty
     @Digits(fraction = 0, integer = 11)
-    private String telefone1;
+    private String phone1;
     
-    @NotEmpty
     @Digits(fraction = 0, integer = 11)
-    private String telefone2;
-
-    @Digits(fraction = 0, integer = 11)
-    private String telefone3;
+    private String phone2;
 
     @NotEmpty
     @Email
     private String email;
     
-//    @NotEmpty
-//    private String escolaridade;
+    @NotEmpty
+    private String degree;
     
     @NotEmpty
-    private String profissao;
+    private String profession;
     
     
     public String getName() {
@@ -56,29 +52,21 @@ public class User extends AbstractEntity{
 		this.cpf = cpf;
 	}
 
-	public String getTelefone1() {
-		return telefone1;
+	public String getphone1() {
+		return phone1;
 	}
 
-	public void setTelefone1(String telefone1) {
-		this.telefone1 = telefone1;
+	public void setphone1(String phone1) {
+		this.phone1 = phone1;
 	}
 
-	public String getTelefone2() {
-		return telefone2;
+	public String getphone2() {
+		return phone2;
 	}
 
-	public void setTelefone2(String telefone2) {
-		this.telefone2 = telefone2;
+	public void setphone2(String phone2) {
+		this.phone2 = phone2;
 	}
-
-	public String getTelefone3() {
-		return telefone3;
-	}
-
-	public void setTelefone3(String telefone3) {
-		this.telefone3 = telefone3;
-	}    
 
     public String getEmail() {
         return email;
@@ -88,19 +76,19 @@ public class User extends AbstractEntity{
         this.email = email;
     }
 
-/*	public String getEscolaridade() {
-		return escolaridade;
+	public String getdegree() {
+		return degree;
 	}
 
-	public void setEscolaridade(String escolaridade) {
-		this.escolaridade = escolaridade;
+	public void setdegree(String degree) {
+		this.degree = degree;
 	}
-*/
+
 	public String getProfissao() {
-		return profissao;
+		return profession;
 	}
 
-	public void setProfissao(String profissao) {
-		this.profissao = profissao;
+	public void setProfession(String profession) {
+		this.profession = profession;
 	}
 }
