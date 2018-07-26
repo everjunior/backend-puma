@@ -15,14 +15,11 @@ public class User extends AbstractEntity{
     private String name;
 
 	@NotEmpty
-	@Digits(fraction = 0, integer = 11)
 	private String cpf;
     
 	@NotEmpty
-    @Digits(fraction = 0, integer = 11)
     private String phone1;
     
-    @Digits(fraction = 0, integer = 11)
     private String phone2;
 
     @NotEmpty
