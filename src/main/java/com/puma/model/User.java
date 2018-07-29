@@ -1,6 +1,7 @@
 package com.puma.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
@@ -10,7 +11,7 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 @Table (name = "app_user")
 public class User extends AbstractEntity{
-        
+
 	@NotEmpty
     private String name;
 
@@ -31,8 +32,8 @@ public class User extends AbstractEntity{
     
     @NotEmpty
     private String profession;
-    
-    
+
+
     public String getName() {
         return name;
     }
@@ -40,7 +41,7 @@ public class User extends AbstractEntity{
     public void setName(String name) {
         this.name = name;
     }
-    
+
 	public String getCpf() {
 		return cpf;
 	}
@@ -49,19 +50,19 @@ public class User extends AbstractEntity{
 		this.cpf = cpf;
 	}
 
-	public String getphone1() {
+	public String getPhone1() {
 		return phone1;
 	}
 
-	public void setphone1(String phone1) {
+	public void setPhone1(String phone1) {
 		this.phone1 = phone1;
 	}
 
-	public String getphone2() {
+	public String getPhone2() {
 		return phone2;
 	}
 
-	public void setphone2(String phone2) {
+	public void setPhone2(String phone2) {
 		this.phone2 = phone2;
 	}
 
@@ -81,7 +82,7 @@ public class User extends AbstractEntity{
 		this.degree = degree;
 	}
 
-	public String getProfissao() {
+	public String getProfession() {
 		return profession;
 	}
 
