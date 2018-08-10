@@ -2,21 +2,26 @@ language: java
 
 jdk:
 - oraclejdk8
+
 services:
   - postgresql
+
+postgres:
+  adapter: postgresql
+  database: myapp_test
+  username: postgres
+
 before_script:
-  - psql -c 'create database pumadb;' -U postgres
-  - psql 
-addons:
-  postgresql: "10"
+  - psql -c "alter user postgres with password 'puma'" -h localhost -U postgres
+  - psql -c 'create database pumadb;' -U postgres  -h localhost
+
   apt:
     packages:
     - postgresql-10
     - postgresql-client-10
-env:
-  global:
-  - PGPORT=5432
-
+  env:
+    global:
+      - PGPORT=5432
 
 deploy:
   provider: heroku
