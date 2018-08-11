@@ -1,6 +1,26 @@
 language: java
+
 jdk:
 - oraclejdk8
+
+sudo: required
+
+services:
+  - postgresql
+
+addons:
+    postgresql: "9.6"
+
+env:
+  global:
+  - PGPORT=5432
+
+before_script:
+- bash install-postgres-10.sh
+- psql -c 'create database pumadb;' -U postgres
+- psql -c "alter user postgres with password 'puma';" -U postgres -h localhost
+
+
 deploy:
   provider: heroku
   api-key:

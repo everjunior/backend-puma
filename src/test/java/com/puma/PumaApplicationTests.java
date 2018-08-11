@@ -1,4 +1,4 @@
-package com.puma.puma;
+package com.puma;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
