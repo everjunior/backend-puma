@@ -83,11 +83,12 @@ public class JwtTokenUtil implements Serializable {
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(userDetails.getUsername())
-                .setSubject(userDetails.getAuthorities().toString())
+                .claim("authorities", userDetails.getAuthorities())
                 .setIssuedAt(createdDate)
                 .setExpiration(expirationDate)
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
+
     }
 
     public Boolean canTokenBeRefreshed(String token, Date lastPasswordReset) {
