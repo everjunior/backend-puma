@@ -7,7 +7,7 @@ import org.springframework.beans.BeanWrapperImpl;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UpdateUserUtil {
+public class DynamicUpdateUtil {
 
     public static void copyNonNullProperties(Object src, Object target) {
         BeanUtils.copyProperties(src, target, getNullPropertyNames(src));
