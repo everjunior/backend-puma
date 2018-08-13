@@ -1,5 +1,5 @@
 package com.puma.endpoint.management;
-import com.puma.endpoint.util.UpdateUserUtil;
+import com.puma.endpoint.util.DynamicUpdateUtil;
 import com.puma.model.User;
 import com.puma.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import javax.persistence.EntityManager;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +31,6 @@ public class UserManagementEndpoint {
     @GetMapping(path = "/user/listById/{id}")
     public ResponseEntity<?> getUserById(@PathVariable("id") Long id){
         Optional<User> user = userDAO.findById(id);
-        user.get().setPassword(null);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
@@ -39,10 +38,10 @@ public class UserManagementEndpoint {
     public ResponseEntity<?> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
 
         User existing = userDAO.findOneById(id);
-        UpdateUserUtil.copyNonNullProperties(user, existing);
+        DynamicUpdateUtil.copyNonNullProperties(user, existing);
         userDAO.saveAndFlush(existing);
 
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return new ResponseEntity<>(existing, HttpStatus.OK);
     }
 
     @DeleteMapping(path = "user/delete/{id}")

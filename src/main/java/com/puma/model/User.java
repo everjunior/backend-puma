@@ -1,14 +1,12 @@
 package com.puma.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SelectBeforeUpdate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +21,7 @@ import javax.validation.constraints.Size;
 public class User {
 
 	@Id
-	@Column(name = "ID")
+	@Column(name = "USER_ID")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
 	@SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
 	private Long id;
@@ -88,8 +86,8 @@ public class User {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 			name = "USER_AUTHORITY",
-			joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "ID")},
-			inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "ID")})
+			joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")},
+			inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_ID", referencedColumnName = "AUTHORITY_ID")})
 	private List<Authority> authorities;
 
 	public Long getId() {

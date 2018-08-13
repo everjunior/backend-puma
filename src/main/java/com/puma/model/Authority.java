@@ -13,7 +13,7 @@ import java.util.List;
 public class Authority {
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "AUTHORITY_ID")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "authority_seq")
     @SequenceGenerator(name = "authority_seq", sequenceName = "authority_seq", allocationSize = 1)
     private Long id;
