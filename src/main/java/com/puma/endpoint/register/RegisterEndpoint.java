@@ -37,6 +37,6 @@ public class RegisterEndpoint {
             user.setLastPasswordResetDate(new Date());
             user.setEnabled(true);
             userRepository.save(user);
-        return new ResponseEntity<>("User created successfully!", HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }
