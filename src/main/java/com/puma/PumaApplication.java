@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@EnableAutoConfiguration
 @SpringBootApplication
 public class PumaApplication {
 	public static void main(String[] args) {
