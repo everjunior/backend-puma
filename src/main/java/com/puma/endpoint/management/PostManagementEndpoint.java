@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@CrossOrigin(origins = { "*" }, maxAge = 6000)
 @PreAuthorize("hasRole('ADMIN')")
 @RestController
 @RequestMapping("/sec/post")
