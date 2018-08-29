@@ -1,9 +1,12 @@
 package com.puma.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity (name="PROJECT_AUTHOR_CATEGORY")
 public class  ProjectAuthorCategory {
+    public enum ProjectAuthorCategoryDescription { PESSOA_FISICA, PESSOA_JURIDICA }
+
     @Id
     @Column(name = "PROJECT_AUTHOR_CATEGORY_ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_author_category_seq")
@@ -11,7 +14,9 @@ public class  ProjectAuthorCategory {
     private Long id;
 
     @Column(name="DESCRIPTION", nullable = false)
-    private String description;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private ProjectAuthorCategoryDescription description;
 
     public Long getId() {
         return id;
@@ -21,11 +26,11 @@ public class  ProjectAuthorCategory {
         this.id = id;
     }
 
-    public String getDescription() {
+    public ProjectAuthorCategoryDescription getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(ProjectAuthorCategoryDescription description) {
         this.description = description;
     }
 }

@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity(name="PROJECT_STATUS")
 public class ProjectStatus {
+
     @Id
     @Column(name = "PROJECT_STATUS_ID", nullable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_status_seq")

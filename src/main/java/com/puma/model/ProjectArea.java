@@ -7,15 +7,14 @@ public class ProjectArea {
 
     @Id
     @Column(name = "PROJECT_AREA_ID")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_area_seq")
     @SequenceGenerator(name = "project_area_seq", sequenceName = "project_area_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "PSP", nullable = false)
     private Long psp;
 
-    @Column(name = "DESCRIPTION", nullable = false)
-    private String description;
+    @Column(name = "name", nullable = false)
+    private String name;
 
     public Long getId() {
         return id;
@@ -33,11 +32,11 @@ public class ProjectArea {
         this.psp = psp;
     }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String description) {
+        this.name = description;
     }
 }

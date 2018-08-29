@@ -20,12 +20,10 @@ import java.util.Optional;
 public class PostManagementEndpoint {
 
     private final PostRepository postDao;
-    private final UserRepository userDao;
 
     @Autowired
-    public PostManagementEndpoint(PostRepository postDao, UserRepository userDao) {
+    public PostManagementEndpoint(PostRepository postDao) {
         this.postDao = postDao;
-        this.userDao = userDao;
     }
 
     @GetMapping(path ="/listAll")
