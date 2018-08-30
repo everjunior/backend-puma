@@ -1,7 +1,10 @@
 package com.puma.endpoint.management;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.puma.endpoint.util.DynamicUpdateUtil;
 import com.puma.model.Post;
+import com.puma.model.Project;
 import com.puma.repository.PostRepository;
 import com.puma.repository.UserRepository;
 import org.hibernate.annotations.DynamicUpdate;
@@ -27,7 +30,7 @@ public class PostManagementEndpoint {
     }
 
     @GetMapping(path ="/listAll")
-    public ResponseEntity<?> listAll() {
+    public ResponseEntity<?> listAll() throws JsonProcessingException {
         return new ResponseEntity<>(postDao.findAll(), HttpStatus.OK);
     }
 
@@ -38,11 +41,15 @@ public class PostManagementEndpoint {
     }
 
     @PostMapping(path = "/new")
-    public ResponseEntity<?> newPost(@RequestBody Post post){
+    public ResponseEntity<?> newPost(@RequestBody Post post) throws JsonProcessingException {
         postDao.save(post);
-       return new ResponseEntity<>(post, HttpStatus.OK);
-    }
+        //Object to JSON in String
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonInString = mapper.writeValueAsString(post);
+        System.out.println(jsonInString);
 
+        return new ResponseEntity<>(post, HttpStatus.OK);
+    }
 
     @DeleteMapping(path = "delete/{id}")
     public ResponseEntity<?> deletePost(@PathVariable("id") Long id){

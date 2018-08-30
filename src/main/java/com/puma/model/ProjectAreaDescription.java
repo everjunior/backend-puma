@@ -23,4 +23,27 @@ public class ProjectAreaDescription {
     @Column
     private String description;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public ProjectArea getProjectArea() {
+        return projectArea;
+    }
+
+    public void setProjectArea(ProjectArea projectArea) {
+        this.projectArea = projectArea;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

@@ -29,12 +29,12 @@ public class Project {
 
     @ManyToOne(cascade=CascadeType.DETACH)
     @JoinColumn(name = "AUTHOR_ID", referencedColumnName = "USER_ID", nullable = false)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = User.class)
     @JsonIdentityReference(alwaysAsId = true)
     private User author;
 
     @ManyToOne(cascade=CascadeType.DETACH)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = ProjectAuthorCategory.class)
     @JoinColumn(name = "PROJECT_AUTHOR_CATEGORY_ID", referencedColumnName = "PROJECT_AUTHOR_CATEGORY_ID", nullable = false)
     @JsonIdentityReference(alwaysAsId = true)
     private ProjectAuthorCategory projectAuthorCategory;
@@ -43,7 +43,7 @@ public class Project {
     private String cnpj;
 
     @ManyToOne(cascade=CascadeType.DETACH)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = ProjectStatus.class)
     @JoinColumn(name = "PROJECT_STATUS_ID", referencedColumnName = "PROJECT_STATUS_ID", nullable = false)
     @JsonIdentityReference(alwaysAsId = true)
     private ProjectStatus projectStatus;
@@ -52,11 +52,16 @@ public class Project {
     private String answer;
 
     @ManyToOne(cascade=CascadeType.DETACH)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = ProjectArea.class)
     @JoinColumn(name = "PROJECT_AREA_ID", referencedColumnName = "PROJECT_AREA_ID", nullable = false)
     @JsonIdentityReference(alwaysAsId = true)
-    private ProjectArea idProjectAndCategory;
+    private ProjectArea projectArea;
 
+    @ManyToOne(cascade=CascadeType.DETACH)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = ProjectAreaDescription.class)
+    @JoinColumn(name = "PROJECT_AREA_DESCRIPTION_ID", referencedColumnName = "PROJECT_AREA_DESCRIPTION_ID", nullable = false)
+    @JsonIdentityReference(alwaysAsId = true)
+    private ProjectAreaDescription projectAreaDescription;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CREATE_DATE", nullable = false, updatable = false)
@@ -135,12 +140,12 @@ public class Project {
         this.answer = answer;
     }
 
-    public ProjectArea getIdProjectAndCategory() {
-        return idProjectAndCategory;
+    public ProjectArea getProjectArea() {
+        return projectArea;
     }
 
-    public void setIdProjectAndCategory(ProjectArea idProjectAndCategory) {
-        this.idProjectAndCategory = idProjectAndCategory;
+    public void setProjectArea(ProjectArea projectArea) {
+        this.projectArea = projectArea;
     }
 
     public Date getCreateDate() {
@@ -151,4 +156,11 @@ public class Project {
         this.createDate = createDate;
     }
 
+    public ProjectAreaDescription getProjectAreaDescription() {
+        return projectAreaDescription;
+    }
+
+    public void setProjectAreaDescription(ProjectAreaDescription projectAreaDescription) {
+        this.projectAreaDescription = projectAreaDescription;
+    }
 }

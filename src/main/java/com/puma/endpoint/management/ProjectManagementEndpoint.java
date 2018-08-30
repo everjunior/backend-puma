@@ -1,5 +1,7 @@
 package com.puma.endpoint.management;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.puma.endpoint.util.DynamicUpdateUtil;
 import com.puma.model.Project;
 import com.puma.repository.ProjectRepository;
@@ -25,7 +27,12 @@ public class ProjectManagementEndpoint {
     }
 
     @GetMapping(path ="/listAll")
-    public ResponseEntity<?> listAll() {
+    public ResponseEntity<?> listAll() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        Project user = new Project();
+        //Object to JSON in String
+        String jsonInString = mapper.writeValueAsString(user);
+        System.out.println(jsonInString);
         return new ResponseEntity<>(projectDao.findAll(), HttpStatus.OK);
     }
 
@@ -34,6 +41,14 @@ public class ProjectManagementEndpoint {
         Optional<Project> project = projectDao.findById(id);
         return new ResponseEntity<>(project, HttpStatus.OK);
     }
+
+    @DeleteMapping(path = "delete/{id}")
+    public ResponseEntity<?> deletePost(@PathVariable("id") Long id){
+        Project project = projectDao.findOneById(id);
+        projectDao.delete(project);
+        return new ResponseEntity<>("Project deleted!", HttpStatus.OK);
+    }
+
 
     @PostMapping(path = "/new")
     public ResponseEntity<?> newProject(@RequestBody Project project){

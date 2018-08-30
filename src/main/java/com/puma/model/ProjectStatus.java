@@ -11,6 +11,7 @@ public class ProjectStatus {
     @SequenceGenerator(name = "project_status_seq", sequenceName = "project_status_seq", allocationSize = 1)
     private Long id;
 
+
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 

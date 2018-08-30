@@ -9,6 +9,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class PumaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PumaApplication.class, args);
-		System.out.println(new BCryptPasswordEncoder().encode("123"));
+		System.out.println(new BCryptPasswordEncoder().encode("user"));
 	}
 }

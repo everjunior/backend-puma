@@ -10,8 +10,8 @@ public class ProjectArea {
     @SequenceGenerator(name = "project_area_seq", sequenceName = "project_area_seq", allocationSize = 1)
     private Long id;
 
-    @Column(name = "PSP", nullable = false)
-    private Long psp;
+    @Column(name = "DESCRIPTION", nullable = false)
+    private String description;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -24,12 +24,12 @@ public class ProjectArea {
         this.id = id;
     }
 
-    public Long getPsp() {
-        return psp;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPsp(Long psp) {
-        this.psp = psp;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getName() {
