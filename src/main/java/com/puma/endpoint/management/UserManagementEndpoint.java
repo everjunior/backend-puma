@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,11 +37,13 @@ public class UserManagementEndpoint {
 
     @PutMapping(path = "user/update/{id}")
     public ResponseEntity<?> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
+        if (user.getPassword() != null){
+                user.setLastPasswordResetDate(new Date());
+        }
 
         User existing = userDAO.findOneById(id);
         DynamicUpdateUtil.copyNonNullProperties(user, existing);
         userDAO.saveAndFlush(existing);
-
         return new ResponseEntity<>(existing, HttpStatus.OK);
     }
 

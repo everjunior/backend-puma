@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "AUTHORITY")
 public class Authority {
+    public enum AuthorityName { ROLE_USER, ROLE_ADMIN }
 
     @Id
     @Column(name = "AUTHORITY_ID")

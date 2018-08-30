@@ -9,15 +9,16 @@ import java.util.Date;
 @Table(name = "post")
 public class Post {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "POST_ID")
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_seq")
+    @SequenceGenerator(name = "post_seq", sequenceName = "post_seq", allocationSize = 1)
     private Long id;
 
-    @Column(name = "title")
+    @Column(name = "TITLE")
     private String title;
 
-    @Column(name = "body", columnDefinition = "TEXT")
+    @Column(name = "BODY", columnDefinition = "TEXT")
     private String body;
 
     @Temporal(TemporalType.TIMESTAMP)

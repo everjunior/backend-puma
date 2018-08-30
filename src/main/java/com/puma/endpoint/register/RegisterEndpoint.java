@@ -1,7 +1,6 @@
 package com.puma.endpoint.register;
 
 import com.puma.model.Authority;
-import com.puma.model.AuthorityName;
 import com.puma.model.User;
 import com.puma.repository.AuthorityRepository;
 import com.puma.repository.UserRepository;
@@ -11,24 +10,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import javax.persistence.TemporalType;
-import java.net.URI;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 
 @RestController(value = "/register")
 public class RegisterEndpoint {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    private final AuthorityRepository authorityRepository;
 
     @Autowired
-    private AuthorityRepository authorityRepository;
+    public RegisterEndpoint(UserRepository userRepository, AuthorityRepository authorityRepository) {
+        this.userRepository = userRepository;
+        this.authorityRepository = authorityRepository;
+    }
 
     @PostMapping
     public ResponseEntity<Object> registerUser(@RequestBody User user){
